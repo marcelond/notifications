@@ -10,19 +10,19 @@ class Email{
 
     private $email = \stdClass::class;
 
-    public function __construct(){
+    public function __construct($smtpDebug, $host, $user, $pass, $smtpSecure, $port, $setFromEmail, $setFromName){
         $this->$mail = new  PHPMailer (true);
-        $this->$mail->SMTPDebug = 2;
+        $this->$mail->SMTPDebug = $smtpDebug;
         $this->$mail->isSMTP();
-        $this-> $mail->Host = 'mail.contabilidadeparaigrejas.com';
+        $this-> $mail->Host = '$host';
         $this-> $mail->SMTPAuth = true;
-        $this->$mail->Username = 'sender@contabilidadeparaigrejas.com';
-        $this->$mail->Password = 'test@123';
-        $this-> $mail->SMTPSecure = 'tls';
-        $this-> $mail->Port = '587';
+        $this->$mail->Username = $user;
+        $this->$mail->Password = $pass;
+        $this-> $mail->SMTPSecure = $smtpSecure;
+        $this-> $mail->Port = $port;
         $this->$mail->setLanguage = (langcode: 'br');
         $this->$mail->isHTML(true);
-        $this-> $mail->setFrom = (address: 'comercial@contabilidadeparaigrejas.com', name: 'Equipe');
+        $this-> $mail->setFrom = ($setFromEmail, name: $setFromName);
 
     }
 
